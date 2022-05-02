@@ -1,0 +1,27 @@
+package barreto.javier.climate;
+
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
+public class Observable {
+	private double temperature = 0;
+
+	private PropertyChangeSupport support;
+
+	public Observable() {
+		support = new PropertyChangeSupport(this);
+	}
+
+	public void addPropertyChangeListener(PropertyChangeListener listner) {
+		support.addPropertyChangeListener(listner);
+	}
+
+	public void removePropertyChangeListener(PropertyChangeListener listner) {
+		support.removePropertyChangeListener(listner);
+	}
+
+	public void setTemperature(double value) {
+		support.firePropertyChange("Temperature", this.temperature, value);
+		this.temperature = value;
+	}
+}
