@@ -1,7 +1,6 @@
 package barreto.javier.climate;
 
 public class OutdoorThermometer extends Thermometer {
-  private double lastTemperature;
   private final double min;
   private final double max;
 
@@ -9,6 +8,11 @@ public class OutdoorThermometer extends Thermometer {
     this.min = min;
     this.max = max;
 	}
+
+  public double getTemperature() {
+    this.currentTemperature = calculateExternalTemperature(this.currentTemperature, this.min, this.max);
+    return this.currentTemperature;
+  }
 
 	/**
 	 * Calculating the external temperature. Values are only valid if the temperature is being

@@ -1,12 +1,9 @@
 package barreto.javier.climate;
 
 public abstract class Thermometer {
-	protected double currentTemp;
-
-  public Thermometer() {
-	}
+	protected double currentTemperature;
 
 	public double getTemperature() {
-		return currentTemp;
+		return currentTemperature;
 	}
 }
