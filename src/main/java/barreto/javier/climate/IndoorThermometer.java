@@ -7,10 +7,12 @@ public class IndoorThermometer extends Thermometer {
   private static final int WAIT_DELAY_SECONDS = 6;
 	private int distanceToHeater;
 	private double outdoorTemperature;
+  private Heater heater;
 
-	public IndoorThermometer(int distanceToHeater, double outdoorTemperature) {
+	public IndoorThermometer(int distanceToHeater, double outdoorTemperature, Heater heater) {
 		this.distanceToHeater = distanceToHeater;
 		this.outdoorTemperature = outdoorTemperature;
+    this.heater = heater;
 	}
 
 	/**
@@ -43,8 +45,9 @@ public class IndoorThermometer extends Thermometer {
 		return lastTemp;
 	}
 
-	public void setTemperature() {
+	public double getTemperature() {
 		int heaterPower = 0;
-		this.currentTemp = measureTemperature(currentTemp, heaterPower, distanceToHeater, outdoorTemperature, WAIT_DELAY_SECONDS);
+		this.currentTemperature = measureTemperature(this.currentTemperature, heaterPower, distanceToHeater, outdoorTemperature, WAIT_DELAY_SECONDS);
+    return currentTemperature;
 	}
 }
