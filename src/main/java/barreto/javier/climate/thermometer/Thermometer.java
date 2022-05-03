@@ -1,4 +1,4 @@
-package barreto.javier.climate;
+package barreto.javier.climate.thermometer;
 
 public abstract class Thermometer {
 	protected double currentTemperature;

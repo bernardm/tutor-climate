@@ -1,4 +1,4 @@
-package barreto.javier.climate;
+package barreto.javier.climate.heater;
 
 public interface HeaterState {
 	int getPowerLevel();

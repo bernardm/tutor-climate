@@ -1,7 +1,11 @@
-package barreto.javier.climate;
+package barreto.javier.climate.heater;
 
 public class Heater {
-  HeaterState state;
+  private HeaterState state;
+
+  public Heater() {
+    this.state = new HeaterOFF();
+  }
 
   public int getPowerLevel() {
     return state.getPowerLevel();

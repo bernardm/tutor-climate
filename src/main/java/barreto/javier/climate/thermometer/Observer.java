@@ -1,7 +1,7 @@
-package barreto.javier.climate;
+package barreto.javier.climate.thermometer;
 
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 public class Observer implements PropertyChangeListener {
   private double temperature;

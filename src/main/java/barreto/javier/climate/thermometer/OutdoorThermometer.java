@@ -1,4 +1,4 @@
-package barreto.javier.climate;
+package barreto.javier.climate.thermometer;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -29,9 +29,9 @@ public class OutdoorThermometer extends Thermometer {
 	 * Calculating the external temperature. Values are only valid if the temperature is being
 	 * measured approximately every 10th second.
 	 *
-	 * @param lastTemp  the last measured external temperature
-	 * @param min a lower limit (might be temporally undershot)
-	 * @param max an upper limit (might be temporally exceeded)
+	 * @param lastTemperature the last measured external temperature
+	 * @param min             a lower limit (might be temporally undershot)
+	 * @param max             an upper limit (might be temporally exceeded)
 	 *
 	 * @return an updated external temperature
 	 */

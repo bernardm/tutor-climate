@@ -1,7 +1,9 @@
-package barreto.javier.climate;
+package barreto.javier.climate.thermometer;
 
-import java.beans.PropertyChangeListener;
+import barreto.javier.climate.heater.Heater;
+
 import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 public class IndoorThermometer extends Thermometer implements PropertyChangeListener {
   static final double OUTDOOR_TEMPERATURE_MIN = -20;
