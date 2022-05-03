@@ -3,12 +3,11 @@ package barreto.javier.climate;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class Observable {
+public class OutdoorThermometerMock {
 	private double temperature = 0;
-
 	private PropertyChangeSupport support;
 
-	public Observable() {
+	public OutdoorThermometerMock() {
 		support = new PropertyChangeSupport(this);
 	}
 

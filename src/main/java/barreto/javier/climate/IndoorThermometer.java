@@ -1,6 +1,9 @@
 package barreto.javier.climate;
 
-public class IndoorThermometer extends Thermometer {
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+
+public class IndoorThermometer extends Thermometer implements PropertyChangeListener {
   static final double OUTDOOR_TEMPERATURE_MIN = -20;
   static final double OUTDOOR_TEMPERATURE_MAX = 20;
 
@@ -9,12 +12,20 @@ public class IndoorThermometer extends Thermometer {
 	private double outdoorTemperature;
   private Heater heater;
 
-	public IndoorThermometer(int distanceToHeater, double outdoorTemperature, Heater heater) {
+	public IndoorThermometer(int distanceToHeater) {
 		this.distanceToHeater = distanceToHeater;
-		this.outdoorTemperature = outdoorTemperature;
-    this.heater = heater;
 	}
 
+  public void propertyChange(PropertyChangeEvent evt) {
+    this.outdoorTemperature = (double) evt.getNewValue();
+    System.out.println("Observed temperature: " + this.outdoorTemperature);
+  }
+
+  public double getTemperature() {
+		int heaterPower = 1;
+		this.currentTemperature = measureTemperature(this.currentTemperature, heaterPower, distanceToHeater, outdoorTemperature, WAIT_DELAY_SECONDS);
+    return currentTemperature;
+	}
 	/**
 	 * Calculating the internal temperature in one of two locations.
 	 * This includes a term from a heater (depending on location and
@@ -43,11 +54,5 @@ public class IndoorThermometer extends Thermometer {
 		double outdoorTerm = (lastTemp - outDoorTemp) * secondsSinceLast / 250.0;
 		lastTemp = Math.min(Math.max(lastTemp - outdoorTerm + heaterTerm, outDoorTemp), tMax);
 		return lastTemp;
-	}
-
-	public double getTemperature() {
-		int heaterPower = 0;
-		this.currentTemperature = measureTemperature(this.currentTemperature, heaterPower, distanceToHeater, outdoorTemperature, WAIT_DELAY_SECONDS);
-    return currentTemperature;
 	}
 }

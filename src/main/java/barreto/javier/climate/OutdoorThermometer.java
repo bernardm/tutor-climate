@@ -1,17 +1,28 @@
 package barreto.javier.climate;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 public class OutdoorThermometer extends Thermometer {
   private final double min;
   private final double max;
 
-	public OutdoorThermometer(double min, double max) {
+  private PropertyChangeSupport support;
+	
+  public OutdoorThermometer(double min, double max) {
     this.min = min;
     this.max = max;
+    support = new PropertyChangeSupport(this);
 	}
-
+  
+  public void changeTemperature() {
+    double previousTemperature = this.currentTemperature;
+    this.currentTemperature = getTemperature();
+	  support.firePropertyChange("Temperature", previousTemperature, this.currentTemperature);
+	}
+  
   public double getTemperature() {
-    this.currentTemperature = calculateExternalTemperature(this.currentTemperature, this.min, this.max);
-    return this.currentTemperature;
+    return calculateExternalTemperature(this.currentTemperature, this.min, this.max);
   }
 
 	/**
@@ -30,5 +41,13 @@ public class OutdoorThermometer extends Thermometer {
 		int sign = Math.random() * (left + right) > left ? 1 : -1;
 		lastTemperature += sign * Math.random();
 		return lastTemperature;
+	}
+
+  public void addListener(PropertyChangeListener listener) {
+		support.addPropertyChangeListener(listener);
+	}
+
+	public void removeListener(PropertyChangeListener listener) {
+		support.removePropertyChangeListener(listener);
 	}
 }
