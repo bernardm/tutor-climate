@@ -17,7 +17,7 @@ target/
 # Log file
 *.log
 
-# Package Files #
+# Package files
 *.jar
 *.war
 *.nar

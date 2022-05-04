@@ -1,4 +1,6 @@
-package dk.via.climatizer.model.heater;
+package dk.via.climatizer.model.heater.states;
+
+import dk.via.climatizer.model.heater.Heater;
 
 public class HeaterTimeout implements Runnable {
 	private int delayMilis;

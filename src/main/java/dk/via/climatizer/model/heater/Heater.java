@@ -1,7 +1,9 @@
 package dk.via.climatizer.model.heater;
 
+import dk.via.climatizer.model.heater.states.*;
+
 public class Heater {
-  private HeaterState state;
+  private State state;
 
   public Heater() {
     this.state = new HeaterOFF();
@@ -11,7 +13,7 @@ public class Heater {
     return state.getPowerLevel();
   }
 
-  private void setState(HeaterState state) {
+  private void setState(State state) {
     this.state = state;
   }
 

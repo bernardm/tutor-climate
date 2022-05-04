@@ -1,7 +1,5 @@
 package dk.via.climatizer.model.thermometer;
 
-import dk.via.climatizer.model.heater.Heater;
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -12,7 +10,6 @@ public class IndoorThermometer extends Thermometer implements PropertyChangeList
   private static final int WAIT_DELAY_SECONDS = 6;
 	private int distanceToHeater;
 	private double outdoorTemperature;
-  private Heater heater;
 
 	public IndoorThermometer(int distanceToHeater) {
 		this.distanceToHeater = distanceToHeater;
@@ -28,6 +25,7 @@ public class IndoorThermometer extends Thermometer implements PropertyChangeList
 		this.currentTemperature = measureTemperature(this.currentTemperature, heaterPower, distanceToHeater, outdoorTemperature, WAIT_DELAY_SECONDS);
     return currentTemperature;
 	}
+
 	/**
 	 * Calculating the internal temperature in one of two locations.
 	 * This includes a term from a heater (depending on location and
