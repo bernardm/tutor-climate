@@ -30,7 +30,7 @@ public class HeaterViewModelController extends ViewModel {
 	}
 
 	private String getModeLabel() {
-		return MODE_LABEL_DEFAULT + model.getMode().toString();
+		return MODE_LABEL_DEFAULT + model.getHeaterMode();
 	}
 
 	@Override public void reset() {

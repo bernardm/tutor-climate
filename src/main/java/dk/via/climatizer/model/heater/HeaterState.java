@@ -1,7 +1,7 @@
 package dk.via.climatizer.model.heater;
 
-public interface HeaterState {
-	int getPowerLevel();
-	HeaterState increaseState();
-	HeaterState decreaseState();
+public abstract class HeaterState {
+	public abstract int getPowerLevel();
+	public abstract HeaterState increaseState();
+	public abstract HeaterState decreaseState();
 }

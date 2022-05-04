@@ -10,11 +10,11 @@ public class HeaterTimeout implements Runnable {
 	}
 
 	@Override public void run() {
-		heater.decreaseState();
 		try {
 			Thread.sleep(delayMilis);
 		} catch (InterruptedException e) {
 			throw new IllegalStateException("Interrupted during sleep", e);
 		}
+		heater.decreaseState();
 	}
 }

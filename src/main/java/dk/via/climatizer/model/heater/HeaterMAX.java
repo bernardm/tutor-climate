@@ -1,6 +1,6 @@
 package dk.via.climatizer.model.heater;
 
-public class HeaterMAX implements HeaterState {
+public class HeaterMAX extends HeaterState {
 	@Override public int getPowerLevel() {
 		return 3;
 	}
