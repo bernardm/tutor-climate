@@ -1,4 +1,4 @@
-package barreto.javier.climate.heater;
+package dk.via.climatizer.model.heater;
 
 public class Heater {
   private HeaterState state;

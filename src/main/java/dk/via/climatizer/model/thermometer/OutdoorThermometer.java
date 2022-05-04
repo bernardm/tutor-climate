@@ -1,4 +1,4 @@
-package barreto.javier.climate.thermometer;
+package dk.via.climatizer.model.thermometer;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

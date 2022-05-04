@@ -1,4 +1,4 @@
-package barreto.javier.climate.thermometer;
+package dk.via.climatizer.model.thermometer;
 
 public abstract class Thermometer {
 	protected double currentTemperature;

@@ -1,6 +1,6 @@
-package barreto.javier.climate.thermometer;
+package dk.via.climatizer.model.thermometer;
 
-import barreto.javier.climate.heater.Heater;
+import dk.via.climatizer.model.heater.Heater;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
