@@ -1,7 +1,12 @@
 package dk.via.climatizer.model.heater.states;
 
 public abstract class State {
-	public abstract int getPowerLevel();
-	public abstract State increaseState();
-	public abstract State decreaseState();
+  protected Heater heater;
+  
+  public State(Heater heater) {
+    this.heater = heater;
+  }
+  
+	public abstract void increasePower();
+	public abstract void decreasePower();
 }
