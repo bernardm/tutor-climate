@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?><?import javafx.scene.layout.AnchorPane?><?import javafx.scene.text.*?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="dk.via.climatizer.view.HeaterViewController">
+    <Label layoutX="60.0" layoutY="14.0" text="Indoor Climate Control">
+        <font>
+            <Font size="48.0"/>
+        </font>
+    </Label>
+    <Label fx:id="modeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" layoutY="84.0" prefHeight="35.0" prefWidth="602.0"
+           text="ModeLabel">
+        <font>
+            <Font size="24.0"/>
+        </font>
+    </Label>
+    <Button onAction="#increaseMode" layoutX="406.0" layoutY="150.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="140.0"
+            text="INCREASE">
+        <font>
+            <Font size="16.0"/>
+        </font>
+    </Button>
+    <Button onAction="#decreaseMode" alignment="CENTER" contentDisplay="CENTER" layoutX="64.0" layoutY="150.0" mnemonicParsing="false"
+            prefHeight="100.0" prefWidth="140.0" text="DECREASE">
+        <font>
+            <Font size="16.0"/>
+        </font>
+    </Button>
+    <Button onAction="#seeTemperature" layoutX="250.0" layoutY="171.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="106.0"
+            text="Temperature"/>
+    <Label fx:id="error" alignment="CENTER" contentDisplay="CENTER" ellipsisString="An error has occurred, the following text is incomplete"
+           layoutX="18.0" layoutY="271.0" maxHeight="120.0" maxWidth="568.0" minWidth="568.0" text="ErrorLabel" textAlignment="CENTER"
+           textFill="RED" textOverrun="LEADING_ELLIPSIS" wrapText="true">
+        <font>
+            <Font size="16.0"/>
+        </font>
+    </Label>
+</AnchorPane>

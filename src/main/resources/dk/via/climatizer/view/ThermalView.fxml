@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?><?import javafx.scene.layout.AnchorPane?><?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="dk.via.climatizer.view.ThermalViewController">
+    <Label fx:id="t0" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="200.0" prefHeight="35.0" prefWidth="381.0"
+           text="Outdoor Temperature 1: ">
+        <font>
+            <Font size="24.0"/>
+        </font>
+    </Label>
+    <Label fx:id="t1" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="57.0" prefHeight="35.0" prefWidth="381.0"
+           text="Indoor Temperature 1: ">
+        <font>
+            <Font size="24.0"/>
+        </font>
+    </Label>
+    <Label fx:id="t2" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="132.0" prefHeight="35.0" prefWidth="381.0"
+           text="Indoor Temperature 2: ">
+        <font>
+            <Font size="24.0"/>
+        </font>
+    </Label>
+    <Label fx:id="error" alignment="CENTER" contentDisplay="CENTER" ellipsisString="An error has occurred, the following text is incomplete"
+           layoutX="18.0" layoutY="271.0" maxHeight="120.0" maxWidth="568.0" minWidth="568.0" textAlignment="CENTER"
+           textFill="RED" textOverrun="LEADING_ELLIPSIS" wrapText="true">
+        <font>
+            <Font size="16.0"/>
+        </font>
+    </Label>
+</AnchorPane>
