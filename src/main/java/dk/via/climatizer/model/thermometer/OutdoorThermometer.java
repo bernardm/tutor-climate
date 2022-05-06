@@ -15,7 +15,7 @@ public class OutdoorThermometer extends Thermometer {
     support = new PropertyChangeSupport(this);
 	}
   
-  public void changeTemperature() {
+  @Override public void changeTemperature() {
     double previousTemperature = this.currentTemperature;
     this.currentTemperature = getTemperature();
 	  support.firePropertyChange("Temperature", previousTemperature, this.currentTemperature);

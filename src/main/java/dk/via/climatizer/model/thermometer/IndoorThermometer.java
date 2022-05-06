@@ -1,29 +1,39 @@
 package dk.via.climatizer.model.thermometer;
 
+import dk.via.climatizer.model.heater.Heater;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 public class IndoorThermometer extends Thermometer implements PropertyChangeListener {
-  static final double OUTDOOR_TEMPERATURE_MIN = -20;
-  static final double OUTDOOR_TEMPERATURE_MAX = 20;
+  public static final double OUTDOOR_TEMPERATURE_MIN = -20;
+  public static final double OUTDOOR_TEMPERATURE_MAX = 20;
 
-  private static final int WAIT_DELAY_SECONDS = 6;
+	private int measureDelay;
+
 	private int distanceToHeater;
 	private double outdoorTemperature;
+	private Heater heater;
+	private PropertyChangeSupport support;
 
-	public IndoorThermometer(int distanceToHeater) {
+	public IndoorThermometer(int distanceToHeater, Heater heater, int measureDelay) {
 		this.distanceToHeater = distanceToHeater;
+		this.heater = heater;
+		this.measureDelay = measureDelay;
+		this.support = new PropertyChangeSupport(this);
 	}
 
-  public void propertyChange(PropertyChangeEvent evt) {
-    this.outdoorTemperature = (double) evt.getNewValue();
-    System.out.println("Observed temperature: " + this.outdoorTemperature);
-  }
+	@Override public void changeTemperature() {
+		double previousTemperature = this.currentTemperature;
+		this.currentTemperature = getTemperature();
+		support.firePropertyChange("Temperature", previousTemperature, this.currentTemperature);
+	}
 
   public double getTemperature() {
-		int heaterPower = 1;
-		this.currentTemperature = measureTemperature(this.currentTemperature, heaterPower, distanceToHeater, outdoorTemperature, WAIT_DELAY_SECONDS);
-    return currentTemperature;
+		int heaterPower = heater.getPowerLevel();
+    return measureTemperature(currentTemperature, heaterPower, distanceToHeater, outdoorTemperature,
+															measureDelay);
 	}
 
 	/**
@@ -55,4 +65,16 @@ public class IndoorThermometer extends Thermometer implements PropertyChangeList
 		lastTemp = Math.min(Math.max(lastTemp - outdoorTerm + heaterTerm, outDoorTemp), tMax);
 		return lastTemp;
 	}
-}
+
+	public void addListener(PropertyChangeListener listener) {
+		support.addPropertyChangeListener(listener);
+	}
+
+	public void removeListener(PropertyChangeListener listener) {
+		support.removePropertyChangeListener(listener);
+	}
+
+	public void propertyChange(PropertyChangeEvent evt) {
+		this.outdoorTemperature = (double) evt.getNewValue();
+		System.out.println("Observed temperature: " + this.outdoorTemperature);
+	}}

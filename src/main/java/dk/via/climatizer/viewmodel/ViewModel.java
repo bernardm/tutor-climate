@@ -7,7 +7,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public abstract class ViewModel implements PropertyChangeListener {
-	protected Model model;
+	public Model model;
 	protected PropertyChangeSupport support;
 
 	public ViewModel(Model model) {
@@ -17,11 +17,11 @@ public abstract class ViewModel implements PropertyChangeListener {
 
 	public abstract void bind(String name, Property<?> property);
 
-	public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+	public void addListener(String propertyName, PropertyChangeListener listener) {
 		support.addPropertyChangeListener(propertyName, listener);
 	}
 
-	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+	public void removeListener(String propertyName, PropertyChangeListener listener) {
 		support.removePropertyChangeListener(propertyName, listener);
 	}
 

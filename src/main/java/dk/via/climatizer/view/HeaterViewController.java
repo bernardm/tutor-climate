@@ -1,21 +1,21 @@
 package dk.via.climatizer.view;
 
-import dk.via.climatizer.viewmodel.HeaterViewModelController;
+import dk.via.climatizer.viewmodel.HeaterViewModel;
 import dk.via.climatizer.viewmodel.ViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 
-import static dk.via.climatizer.viewmodel.HeaterViewModelController.HEATER_MODE_PROPERTY;
-import static dk.via.climatizer.viewmodel.HeaterViewModelController.HEATER_VIEW_WARNING_PROPERTY;
+import static dk.via.climatizer.viewmodel.HeaterViewModel.HEATER_MODE_PROPERTY;
+import static dk.via.climatizer.viewmodel.HeaterViewModel.HEATER_VIEW_WARNING_PROPERTY;
 
 public class HeaterViewController extends ViewController {
-	HeaterViewModelController viewModel;
+	HeaterViewModel viewModel;
 	@FXML private Label modeLabel;
 	@FXML private Label error;
 
 	@Override public void init(ViewHandler handler, ViewModel viewModel, Region root) {
-		this.viewModel = (HeaterViewModelController) viewModel;
+		this.viewModel = (HeaterViewModel) viewModel;
 		super.init(handler, viewModel, root);
 	}
 
@@ -25,20 +25,20 @@ public class HeaterViewController extends ViewController {
 	}
 
 	@Override public void setListeners(ViewHandler handler) {
-		viewModel.addPropertyChangeListener(View.HEATER.getName(),
+		viewModel.addListener(View.HEATER.getName(),
 																				evt -> handler.openView(View.HEATER));
-		viewModel.addPropertyChangeListener(View.THERMAL.getName(),
+		viewModel.addListener(View.THERMAL.getName(),
 																				evt -> handler.openView(View.THERMAL));
 	}
 
 	public void increaseMode() {
-		System.out.println("Mode would've been increased");
 		viewModel.increaseMode();
+		System.out.println("Mode value: " + viewModel.model.getHeaterPower());
 	}
 
 	public void decreaseMode() {
-		System.out.println("Mode would've been decreased");
 		viewModel.decreaseMode();
+		System.out.println("Mode value: " + viewModel.model.getHeaterPower());
 	}
 
 	public void seeTemperature() {

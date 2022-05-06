@@ -4,12 +4,12 @@ import dk.via.climatizer.model.Model;
 import dk.via.climatizer.view.View;
 
 public class ViewModelFactory {
-	private final HeaterViewModelController heater;
-	private final ThermalViewModelController thermal;
+	private final HeaterViewModel heater;
+	private final ThermalViewModel thermal;
 
 	public ViewModelFactory(Model model) {
-		this.heater = new HeaterViewModelController(model);
-		this.thermal = new ThermalViewModelController(model);
+		this.heater = new HeaterViewModel(model);
+		this.thermal = new ThermalViewModel(model);
 	}
 
 	public ViewModel getViewModel(View view) {

@@ -7,7 +7,7 @@ import javafx.beans.property.StringProperty;
 
 import java.beans.PropertyChangeEvent;
 
-public class HeaterViewModelController extends ViewModel {
+public class HeaterViewModel extends ViewModel {
 	public static final String HEATER_MODE_PROPERTY = "Mode";
 	public static final String HEATER_VIEW_WARNING_PROPERTY = "Error";
 
@@ -16,7 +16,7 @@ public class HeaterViewModelController extends ViewModel {
 	private StringProperty modeLabel;
 	private StringProperty error;
 
-	public HeaterViewModelController(Model model) {
+	public HeaterViewModel(Model model) {
 		super(model);
 		modeLabel = new SimpleStringProperty(getModeLabel());
 		error = new SimpleStringProperty("");
@@ -30,21 +30,28 @@ public class HeaterViewModelController extends ViewModel {
 	}
 
 	private String getModeLabel() {
-		return MODE_LABEL_DEFAULT + model.getHeaterMode();
+		return MODE_LABEL_DEFAULT + model.getHeaterPower();
 	}
 
 	@Override public void reset() {
-		modeLabel.set("");
+		modeLabel.set(getModeLabel());
 		error.set("");
 	}
 
 	@Override public void propertyChange(PropertyChangeEvent evt) {
-		System.out.println("A property has changed " + evt.toString());
+		switch (evt.getPropertyName()) {
+			case HEATER_MODE_PROPERTY -> modeLabel.set(getModeLabel());
+			case HEATER_VIEW_WARNING_PROPERTY -> error.set((String)evt.getNewValue());
+		}
 	}
 
 	public void increaseMode() {
+		model.increaseHeaterPower();
+		propertyChange(new PropertyChangeEvent(this, HEATER_MODE_PROPERTY, modeLabel.getValue(), getModeLabel()));
 	}
 
 	public void decreaseMode() {
+		model.decreaseHeaterPower();
+		propertyChange(new PropertyChangeEvent(this, HEATER_MODE_PROPERTY, modeLabel.getValue(), getModeLabel()));
 	}
 }

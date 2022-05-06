@@ -1,4 +1,4 @@
-package dk.via.climatizer.model.heater.states;
+package dk.via.climatizer.model.heater;
 
 public abstract class State {
   protected Heater heater;

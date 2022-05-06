@@ -1,19 +1,21 @@
 package dk.via.climatizer.model.heater;
 
-import dk.via.climatizer.model.heater.states.*;
-
 public class Heater {
-  public static final int OFF = 0
-  public static final int MIN = 1
-  public static final int MED = 2
-  public static final int MAX = 3
+  public static final int OFF = 0;
+  public static final int MIN = 1;
+  public static final int MED = 2;
+  public static final int MAX = 3;
   
   private State state;
-  private int powerLevel;
+  int powerLevel;
 
   public Heater() {
-    this.state = new StateOff(this);
-    this.powerLevel = OFF
+    this.state = new StateManual(this);
+    this.powerLevel = OFF;
+  }
+
+  public void setState(State state) {
+    this.state = state;
   }
 
   public int getPowerLevel() {
@@ -21,10 +23,10 @@ public class Heater {
   }
   
   public void increasePower() {
-    this.powerLevel++;
+    state.increasePower();
   }
 
   public void decreasePower() {
-    this.powerLevel--;
+    state.decreasePower();
   }
 }
